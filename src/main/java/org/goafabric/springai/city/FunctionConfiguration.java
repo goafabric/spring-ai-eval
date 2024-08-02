@@ -1,4 +1,4 @@
-package dev.danvega.city;
+package org.goafabric.springai.city;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

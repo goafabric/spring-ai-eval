@@ -1,9 +1,9 @@
-package dev.danvega;
+package org.goafabric.springai;
 
-import dev.danvega.chat.ChatController;
-import dev.danvega.city.CityController;
-import dev.danvega.city.WeatherConfigProperties;
-import dev.danvega.person.PersonController;
+import org.goafabric.springai.chat.ChatController;
+import org.goafabric.springai.city.CityController;
+import org.goafabric.springai.city.WeatherConfigProperties;
+import org.goafabric.springai.person.PersonController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

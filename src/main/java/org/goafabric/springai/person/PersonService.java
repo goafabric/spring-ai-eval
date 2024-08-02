@@ -1,4 +1,4 @@
-package dev.danvega.person;
+package org.goafabric.springai.person;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

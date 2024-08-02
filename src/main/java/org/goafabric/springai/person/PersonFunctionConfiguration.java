@@ -1,4 +1,4 @@
-package dev.danvega.person;
+package org.goafabric.springai.person;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

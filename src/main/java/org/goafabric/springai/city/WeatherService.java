@@ -1,4 +1,4 @@
-package dev.danvega.city;
+package org.goafabric.springai.city;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
