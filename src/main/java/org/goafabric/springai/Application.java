@@ -22,7 +22,7 @@ public class Application {
 	@Bean
 	public CommandLineRunner init(ApplicationContext context, ChatController chatController, CityController cityController, PersonController personController) {
 		//chatController.chat();
-		//cityController.chat();
+		//cityiController.chat();
 		personController.chat();
 
 		return args -> {
