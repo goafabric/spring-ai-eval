@@ -9,8 +9,8 @@ public class PersonController {
 
     public PersonController(ChatClient.Builder builder) {
         this.chatClient = builder
-                .defaultSystem("You are a helpful AI Assistant that can find persons by it's lastName")
-                .defaultFunctions("findByFirstName", "findByLastName")
+                .defaultSystem("You are a helpful AI Assistant that can find persons by their firstname and lastname. You can also find the person addresses based on the personId of the person")
+                .defaultFunctions("findByFirstName", "findByLastName", "findByPersonId")
                 .build();
     }
 
@@ -28,7 +28,9 @@ public class PersonController {
              */
 
             System.out.println(chatClient.prompt().user("I am Searching for bart").call().content());
-            System.out.println(chatClient.prompt().user("I am Searching for someone with named burns").call().content());
+            System.out.println(chatClient.prompt().user("I am Searching for someone with lastname burns").call().content());
+
+            //System.out.println(chatClient.prompt().user("Can you give me the address of bart simpson").call().content());
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }

@@ -42,6 +42,6 @@ public class PersonService {
     public record FirstNameRequest(String firstName) {}
     public record LastNameRequest(String lastName) {}
 
-    public record Person(String id, String firstName, String lastName) {}
+    public record Person(String personId, String firstName, String lastName) {}
 
 }

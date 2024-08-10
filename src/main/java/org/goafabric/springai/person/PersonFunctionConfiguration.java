@@ -19,4 +19,10 @@ public class PersonFunctionConfiguration {
         return new PersonService.FindByLastName();
     }
 
+    @Bean
+    @Description("Get the address of a person by it's personId")
+    public AddressService.FindByPersonId findByPersonId() {
+        return new AddressService.FindByPersonId();
+    }
+
 }
