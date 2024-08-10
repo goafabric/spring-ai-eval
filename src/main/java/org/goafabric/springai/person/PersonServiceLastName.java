@@ -24,7 +24,7 @@ public class PersonServiceLastName implements Function<PersonServiceLastName.Req
 
     @Override
     public Person apply(Request request) {
-        log.info("request {}", request);
+        log.info("searching by lastname {}", request);
         var person = persons.stream().filter(p -> p.lastName.equalsIgnoreCase(request.lastName))
                 .findFirst()
                 .orElseThrow(() -> new NoSuchElementException("Person with lastName '" + request.lastName + "' not found"));
