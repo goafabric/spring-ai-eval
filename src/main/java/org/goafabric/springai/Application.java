@@ -1,17 +1,13 @@
 package org.goafabric.springai;
 
 import org.goafabric.springai.chat.ChatController;
-import org.goafabric.springai.city.CityController;
-import org.goafabric.springai.city.WeatherConfigProperties;
 import org.goafabric.springai.person.PersonController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-@EnableConfigurationProperties(WeatherConfigProperties.class)
 @SpringBootApplication
 public class Application {
 
@@ -20,9 +16,8 @@ public class Application {
 	}
 
 	@Bean
-	public CommandLineRunner init(ApplicationContext context, ChatController chatController, CityController cityController, PersonController personController) {
+	public CommandLineRunner init(ApplicationContext context, ChatController chatController, PersonController personController) {
 		//chatController.chat();
-		//cityiController.chat();
 		personController.chat();
 
 		return args -> {
