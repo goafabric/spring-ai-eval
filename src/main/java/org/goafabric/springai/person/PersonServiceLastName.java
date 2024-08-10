@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
-public class PersonService implements Function<PersonService.Request, PersonService.Person> {
+public class PersonServiceLastName implements Function<PersonServiceLastName.Request, PersonServiceLastName.Person> {
 
-    private static final Logger log = LoggerFactory.getLogger(PersonService.class);
+    private static final Logger log = LoggerFactory.getLogger(PersonServiceLastName.class);
 
     private final List<Person> persons;
 
-    public PersonService() {
+    public PersonServiceLastName() {
         persons = new ArrayList<>();
         persons.add(new Person("0","Bart", "Simpson"));
         persons.add(new Person("1","Homer", "Simpson"));
@@ -25,13 +25,13 @@ public class PersonService implements Function<PersonService.Request, PersonServ
     @Override
     public Person apply(Request request) {
         log.info("request {}", request);
-        var person = persons.stream().filter(p -> p.firstName.equalsIgnoreCase(request.firstName))
+        var person = persons.stream().filter(p -> p.lastName.equalsIgnoreCase(request.lastName))
                 .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("Person with firstName '" + request.firstName + "' not found"));
+                .orElseThrow(() -> new NoSuchElementException("Person with lastName '" + request.lastName + "' not found"));
         log.info("person {}", person);
         return person;
     }
 
-    public record Request(String firstName) {}
+    public record Request(String lastName) {}
     public record Person(String id, String firstName, String lastName) {}
 }

@@ -8,9 +8,15 @@ import org.springframework.context.annotation.Description;
 public class PersonFunctionConfiguration {
 
     @Bean
-    @Description("Get the current person by it's name")
-    public PersonService personFunction() {
+    @Description("Get the current person by it's firstname")
+    public PersonService findByFirstName() {
         return new PersonService();
+    }
+
+    @Bean
+    @Description("Get the current person by it's lastname")
+    public PersonServiceLastName findByLastName() {
+        return new PersonServiceLastName();
     }
 
 }
