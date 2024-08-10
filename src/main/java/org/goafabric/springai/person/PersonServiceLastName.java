@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
-public class PersonServiceLastName implements Function<PersonServiceLastName.Request, PersonServiceLastName.Person> {
+public class PersonServiceLastName implements Function<PersonServiceLastName.LastNameRequest, PersonServiceLastName.Person> {
 
     private static final Logger log = LoggerFactory.getLogger(PersonServiceLastName.class);
 
@@ -23,7 +23,7 @@ public class PersonServiceLastName implements Function<PersonServiceLastName.Req
 
 
     @Override
-    public Person apply(Request request) {
+    public Person apply(LastNameRequest request) {
         log.info("searching by lastname {}", request);
         var person = persons.stream().filter(p -> p.lastName.equalsIgnoreCase(request.lastName))
                 .findFirst()
@@ -32,6 +32,6 @@ public class PersonServiceLastName implements Function<PersonServiceLastName.Req
         return person;
     }
 
-    public record Request(String lastName) {}
+    public record LastNameRequest(String lastName) {}
     public record Person(String id, String firstName, String lastName) {}
 }
