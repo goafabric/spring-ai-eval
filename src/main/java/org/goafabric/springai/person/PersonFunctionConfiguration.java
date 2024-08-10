@@ -9,14 +9,14 @@ public class PersonFunctionConfiguration {
 
     @Bean
     @Description("Get the current person by it's firstname")
-    public PersonService findByFirstName() {
-        return new PersonService();
+    public PersonService.FindByFirstName findByFirstName() {
+        return new PersonService.FindByFirstName();
     }
 
     @Bean
     @Description("Get the current person by it's lastname")
-    public PersonServiceLastName findByLastName() {
-        return new PersonServiceLastName();
+    public PersonService.FindByLastName findByLastName() {
+        return new PersonService.FindByLastName();
     }
 
 }

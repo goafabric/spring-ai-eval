@@ -8,30 +8,40 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
-public class PersonService implements Function<PersonService.FirstNameRequest, PersonService.Person> {
-
+public class PersonService {
     private static final Logger log = LoggerFactory.getLogger(PersonService.class);
 
-    private final List<Person> persons;
+    private static final List<PersonService.Person> persons = new ArrayList<>();
 
-    public PersonService() {
-        persons = new ArrayList<>();
-        persons.add(new Person("0","Bart", "Simpson"));
-        persons.add(new Person("1","Homer", "Simpson"));
-        persons.add(new Person("2", "Monty", "Burns"));
+    static {
+        persons.add(new Person("1","Bart", "Simpson"));
+        persons.add(new Person("2","Homer", "Simpson"));
+        persons.add(new Person("3", "Monty", "Burns"));
     }
 
+    static class FindByFirstName implements Function<FirstNameRequest, Person> {
+        @Override
+        public Person apply(FirstNameRequest request) {
+            log.info("searching by firstname {}", request);
+            return persons.stream().filter(p -> p.firstName.equalsIgnoreCase(request.firstName))
+                    .findFirst()
+                    .orElseThrow(() -> new NoSuchElementException("Person with firstName '" + request.firstName + "' not found"));
+        }
+    }
 
-    @Override
-    public Person apply(FirstNameRequest request) {
-        log.info("searching by firstname {}", request);
-        var person = persons.stream().filter(p -> p.firstName.equalsIgnoreCase(request.firstName))
-                .findFirst()
-                .orElseThrow(() -> new NoSuchElementException("Person with firstName '" + request.firstName + "' not found"));
-        log.info("person {}", person);
-        return person;
+    static class FindByLastName implements Function<LastNameRequest, Person> {
+        @Override
+        public Person apply(LastNameRequest request) {
+            log.info("searching by lastname {}", request);
+            return persons.stream().filter(p -> p.lastName.equalsIgnoreCase(request.lastName))
+                    .findFirst()
+                    .orElseThrow(() -> new NoSuchElementException("Person with lastName '" + request.lastName + "' not found"));
+        }
     }
 
     public record FirstNameRequest(String firstName) {}
+    public record LastNameRequest(String lastName) {}
+
     public record Person(String id, String firstName, String lastName) {}
+
 }
