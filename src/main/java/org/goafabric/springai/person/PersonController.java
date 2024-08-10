@@ -3,8 +3,6 @@ package org.goafabric.springai.person;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Component;
 
-import java.util.Scanner;
-
 @Component
 public class PersonController {
     private final ChatClient chatClient;
@@ -18,6 +16,7 @@ public class PersonController {
 
     public void chat() {
 
+        /*
         var scanner = new Scanner(System.in);
         while (true) {
             System.out.print("[User]: ");
@@ -26,6 +25,8 @@ public class PersonController {
             System.out.println(chatClient.prompt().user(userMessage).call().content());
         }
 
-        //System.out.println(chatClient.prompt().user("I am Searching for bart").call().content());
+         */
+
+        System.out.println(chatClient.prompt().user("I am Searching for bart").call().content());
     }
 }

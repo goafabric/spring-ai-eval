@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
-public class PersonService implements Function<PersonService.Request, PersonService.Response> {
+public class PersonService implements Function<PersonService.Request, PersonService.Person> {
 
     private static final Logger log = LoggerFactory.getLogger(PersonService.class);
 
@@ -22,14 +22,13 @@ public class PersonService implements Function<PersonService.Request, PersonServ
 
 
     @Override
-    public Response apply(Request request) {
+    public Person apply(Request request) {
         log.info("request {}", request);
         var person = persons.stream().filter(p -> p.firstName.equalsIgnoreCase(request.name)).toList().getFirst();
         log.info("person {}", person);
-        return new Response(person);
+        return person;
     }
 
     public record Request(String name) {}
-    public record Response(Person person) {}
     public record Person(String firstName, String lastName) {}
 }
