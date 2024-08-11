@@ -51,6 +51,7 @@ dependencies {
 
 	//ai
 	implementation("org.springframework.ai:spring-ai-ollama-spring-boot-starter")
+	//implementation("org.springframework.ai:spring-ai-openai-spring-boot-starter")
 
 	//test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
