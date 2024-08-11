@@ -28,8 +28,7 @@ public class PersonController {
              */
 
             System.out.println(chatClient.prompt().user("I am Searching for bart").call().content());
-            System.out.println(chatClient.prompt().user("Can you give me his address").call().content());
-            //System.out.println(chatClient.prompt().user("I am Searching for someone with lastname burns").call().content());
+            System.out.println(chatClient.prompt().user("I am Searching for someone with lastname burns").call().content());
 
             //System.out.println(chatClient.prompt().user("Can you give me the address of bart").call().content());
         } catch (Exception e) {
